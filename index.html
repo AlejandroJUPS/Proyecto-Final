@@ -1,12 +1,14 @@
-<!DOCTYPE html>
-<html lang="es">
+<!DOCTYPE html> <!-- Indica que el documento es HTML5 -->
+<html lang="es"> <!-- Comienza el documento HTML, idioma español -->
 <head>
-    <meta charset="UTF-8">
-    <title>Ingreso</title>
+    <meta charset="UTF-8"> <!-- Define la codificación de caracteres como UTF-8 -->
+    <title>Ingreso</title> <!-- Título de la pestaña del navegador -->
     <style>
+        /* { Selector universal para ajusta el box-sizing } */
         * {
             box-sizing: border-box;
         }
+        /* { Estilos generales del body para centrar y dar fondo oscuro } */
         body {
             margin: 0;
             padding: 0;
@@ -18,17 +20,20 @@
             justify-content: center;
             align-items: center;
         }
+        /* { Contenedor principal centrado y en columna } */
         .container {
             display: flex;
             flex-direction: column;
             align-items: center;
             gap: 15px;
         }
+        /* { Estilos para el input de PIN } */
         input {
             padding: 10px;
             font-size: 16px;
             width: 200px;
         }
+        /* { Estilos para el botón de ingresar } */
         button {
             background-color: black;
             color: white;
@@ -39,6 +44,7 @@
             border-radius: 5px;
             cursor: pointer;
         }
+        /* { Estilos para el elemento con id DIABLO (no usado en este HTML) } */
         #DIABLO {
             width: 200px;
             height: 200px;
@@ -51,6 +57,7 @@
     </style>
 </head>
 <body>
+    <!-- { Contenedor principal con título, instrucción, input y botón } -->
     <div class="container">
         <h1>RETROPREPARATE</h1>
         <p>Ingresa el PIN para continuar</p>
@@ -58,14 +65,16 @@
         <button>Ingresar</button>
     </div>
     <script>
-        const PIN_CORRECTO = "1234"; // Aquí defines la contraseña
+        // Definición del PIN correcto
+        const PIN_CORRECTO = "1234"; // PIN que se debe ingresar para acceder
 
-        document.querySelector("button").addEventListener("click", () => {
-            const inputPIN = document.querySelector("input").value;
-            if (inputPIN === PIN_CORRECTO) {
-                window.location.href = "Menu.html"; // Redirige a la URL del juego
+        // Evento click del botón para validar el PIN
+        document.querySelector("button").addEventListener("click", () => { // Selecciona el botón y agrega un evento al hacer clic
+            const inputPIN = document.querySelector("input").value; // Obtiene el valor ingresado en el campo input
+            if (inputPIN === PIN_CORRECTO) { // Compara el valor ingresado con el PIN correcto
+                window.location.href = "Menu.html"; // Si es correcto, redirige a Menu.html
             } else {
-                alert("PIN incorrecto");
+                alert("PIN incorrecto"); // Si es incorrecto, muestra una alerta
             }
         });
     </script>

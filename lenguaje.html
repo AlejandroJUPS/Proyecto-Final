@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Prueba de Lenguaje</title>
+  <style>
+    /* Ajuste general de caja para todos los elementos */
+    * {
+      box-sizing: border-box;
+    }
+
+    /* Estilo del cuerpo: fondo oscuro, texto blanco y centrado */
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #121212;
+      color: white;
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    /* Contenedor principal con fondo, bordes redondeados y sombra */
+    .quiz-container {
+      background-color: #1e1e1e;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 0 20px rgba(0, 255, 128, 0.2);
+      width: 90%;
+      max-width: 500px;
+    }
+
+    /* Título centrado del cuestionario */
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    /* Espaciado entre preguntas */
+    .question {
+      margin: 20px 0;
+    }
+
+    /* Estilo de etiquetas de opciones */
+    label {
+      display: block;
+      margin: 5px 0;
+      cursor: pointer;
+    }
+
+    /* Espacio entre botón de radio y texto */
+    input[type="radio"] {
+      margin-right: 8px;
+    }
+
+    /* Botón de calificación con estilo oscuro y redondeado */
+    button {
+      margin-top: 20px;
+      width: 100%;
+      padding: 12px;
+      font-size: 16px;
+      background-color: black;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    /* Efecto al pasar el mouse sobre el botón */
+    button:hover {
+      background-color: #333;
+    }
+
+    /* Estilo del resultado mostrado al final del test */
+    .result {
+      margin-top: 20px;
+      font-weight: bold;
+      text-align: center;
+    }
+  </style>
+</head>
+<body> <!-- Cuerpo del documento HTML -->
+  <div class="quiz-container"> <!-- Contenedor principal del cuestionario -->
+    <h2>Prueba de Lenguaje</h2> <!-- Título de la prueba -->
+    <form id="quiz-form"> <!-- Inicio del formulario -->
+      <div class="question"> <!-- Pregunta 1 -->
+        <p>1. ¿Cuál es el sujeto en la oración "El perro corre rápido"?</p>
+        <label><input type="radio" name="q1" value="El perro"> El perro</label>
+        <label><input type="radio" name="q1" value="corre"> corre</label>
+        <label><input type="radio" name="q1" value="rápido"> rápido</label>
+      </div>
+      <div class="question"> <!-- Pregunta 2 -->
+        <p>2. ¿Qué tipo de palabra es "rápido" en la oración anterior?</p>
+        <label><input type="radio" name="q2" value="Adjetivo"> Adjetivo</label>
+        <label><input type="radio" name="q2" value="Verbo"> Verbo</label>
+        <label><input type="radio" name="q2" value="Sustantivo"> Sustantivo</label>
+      </div>
+      <div class="question"> <!-- Pregunta 3 -->
+        <p>3. ¿Cuál es el sinónimo de la palabra "feliz"?</p>
+        <label><input type="radio" name="q3" value="Triste"> Triste</label>
+        <label><input type="radio" name="q3" value="Contento"> Contento</label>
+        <label><input type="radio" name="q3" value="Rápido"> Rápido</label>
+      </div>
+      <div class="question"> <!-- Pregunta 4 -->
+        <p>4. ¿Qué signo de puntuación se usa para indicar una pregunta?</p>
+        <label><input type="radio" name="q4" value="Signo de interrogación"> Signo de interrogación</label>
+        <label><input type="radio" name="q4" value="Coma"> Coma</label>
+        <label><input type="radio" name="q4" value="Punto"> Punto</label>
+      </div>
+      <div class="question"> <!-- Pregunta 5 -->
+        <p>5. ¿Cuál es la forma correcta del plural de "luz"?</p>
+        <label><input type="radio" name="q5" value="Luces"> Luces</label>
+        <label><input type="radio" name="q5" value="Luzes"> Luzes</label>
+        <label><input type="radio" name="q5" value="Luzs"> Luzs</label>
+      </div>
+      <button type="button" onclick="calificar()">Calificar</button> <!-- Botón que ejecuta la función calificar al hacer clic -->
+    </form> <!-- Fin del formulario -->
+    <div class="result" id="resultado"></div> <!-- Contenedor donde se mostrará el resultado -->
+  </div> <!-- Fin del contenedor principal del quiz -->
+
+  <script> <!-- Inicio del bloque de JavaScript -->
+    // Función para calificar el cuestionario
+    function calificar() {
+      // Objeto que contiene las respuestas correctas por cada pregunta (clave: nombre del input)
+      const respuestasCorrectas = {
+        q1: "El perro", // Respuesta correcta para la pregunta 1
+        q2: "Adjetivo", // Respuesta correcta para la pregunta 2
+        q3: "Contento", // Respuesta correcta para la pregunta 3
+        q4: "Signo de interrogación", // Respuesta correcta para la pregunta 4
+        q5: "Luces" // Respuesta correcta para la pregunta 5
+      };
+
+      let correctas = 0; // Variable que cuenta cuántas respuestas correctas tiene el usuario
+
+      // Recorre todas las preguntas para reiniciar el color de las etiquetas antes de calificar
+      for (let pregunta in respuestasCorrectas) {
+        // Selecciona todas las opciones (radios) de la pregunta actual
+        const opciones = document.querySelectorAll(`input[name="${pregunta}"]`);
+        // Recorre cada opción para restablecer el color original
+        opciones.forEach(opcion => {
+          opcion.parentElement.style.color = "white"; // Restaura el color del texto de la opción a blanco
+        });
+      }
+
+      // Recorre todas las preguntas para verificar cuál opción seleccionó el usuario
+      for (let pregunta in respuestasCorrectas) {
+        // Selecciona la opción marcada por el usuario en la pregunta actual
+        const seleccion = document.querySelector(`input[name="${pregunta}"]:checked`);
+        if (seleccion) { // Verifica si el usuario seleccionó alguna opción
+          if (seleccion.value === respuestasCorrectas[pregunta]) { // Compara con la respuesta correcta
+            correctas++; // Si es correcta, incrementa el contador de respuestas correctas
+          } else {
+            seleccion.parentElement.style.color = "red"; // Si es incorrecta, cambia el texto a rojo
+          }
+        }
+      }
+
+      // Selecciona el elemento donde se mostrará el resultado final
+      const resultado = document.getElementById("resultado");
+
+      // Inserta el texto del resultado con el número de respuestas correctas y su equivalente en porcentaje
+      resultado.innerHTML = `Obtuviste ${correctas} de 5 respuestas correctas. (${correctas * 20}%)`;
+
+      // Cambia el color del texto del resultado: verde si están todas correctas, naranja si no
+      resultado.style.color = correctas === 5 ? "lime" : "orange";
+    }
+  </script> <!-- Fin del bloque de JavaScript -->
+</body> <!-- Cierre del body del documento -->
+</html> <!-- Cierre del documento HTML -->

@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>Prueba de Química</title>
+  <title>Prueba de Matemáticas</title>
   <style>
 
     /* Ajuste general de caja para todos los elementos */
@@ -76,37 +76,37 @@
 </head>
 <body>
   <div class="quiz-container">
-    <h2>Prueba de Química</h2>
+    <h2>Prueba de Matemáticas</h2>
     <form id="quiz-form">
-      <div class="question"><!-- pregunta 1 quiz -->
-        <p>1. ¿Cuál es el símbolo químico del oxígeno?</p>
-        <label><input type="radio" name="q1" value="O"> O</label>
-        <label><input type="radio" name="q1" value="Ox"> Ox</label>
-        <label><input type="radio" name="q1" value="Og"> Og</label>
+      <div class="question">
+        <p>1. ¿Cuánto es 7 + 5?</p>
+        <label><input type="radio" name="q1" value="12"> 12</label>
+        <label><input type="radio" name="q1" value="10"> 10</label>
+        <label><input type="radio" name="q1" value="14"> 14</label>
       </div>
-      <div class="question"><!-- pregunta 2 quiz -->
-        <p>2. ¿Cuál es el número atómico del hidrógeno?</p>
-        <label><input type="radio" name="q2" value="1"> 1</label>
-        <label><input type="radio" name="q2" value="2"> 2</label>
-        <label><input type="radio" name="q2" value="3"> 3</label>
+      <div class="question">
+        <p>2. ¿Cuál es la raíz cuadrada de 81?</p>
+        <label><input type="radio" name="q2" value="9"> 9</label>
+        <label><input type="radio" name="q2" value="8"> 8</label>
+        <label><input type="radio" name="q2" value="7"> 7</label>
       </div>
-      <div class="question"><!-- pregunta 3 quiz -->
-        <p>3. ¿Qué tipo de enlace se forma al compartir electrones?</p>
-        <label><input type="radio" name="q3" value="Covalente"> Covalente</label>
-        <label><input type="radio" name="q3" value="Iónico"> Iónico</label>
-        <label><input type="radio" name="q3" value="Metálico"> Metálico</label>
+      <div class="question">
+        <p>3. ¿Cuál es el resultado de 15 + 3?</p>
+        <label><input type="radio" name="q3" value="18"> 18</label>
+        <label><input type="radio" name="q3" value="16"> 16</label>
+        <label><input type="radio" name="q3" value="6"> 6</label>
       </div>
-      <div class="question"><!-- pregunta 4 quiz -->
-        <p>4. ¿Cuál es la fórmula del agua?</p>
-        <label><input type="radio" name="q4" value="H₂O"> H₂O</label>
-        <label><input type="radio" name="q4" value="HO₂"> HO₂</label>
-        <label><input type="radio" name="q4" value="OH"> OH</label>
+      <div class="question">
+        <p>4. ¿Qué tipo de triángulo tiene todos sus lados iguales?</p>
+        <label><input type="radio" name="q4" value="Equilátero"> Equilátero</label>
+        <label><input type="radio" name="q4" value="Isósceles"> Isósceles</label>
+        <label><input type="radio" name="q4" value="Escaleno"> Escaleno</label>
       </div>
-      <div class="question"><!-- pregunta 5 quiz -->
-        <p>5. ¿Qué es un ácido según la teoría de Brønsted-Lowry?</p>
-        <label><input type="radio" name="q5" value="Donador de protones"> Donador de protones</label>
-        <label><input type="radio" name="q5" value="Aceptor de protones"> Aceptor de protones</label>
-        <label><input type="radio" name="q5" value="Electrón libre"> Electrón libre</label>
+      <div class="question">
+        <p>5. ¿Cuál es el valor de x si 2x + 3 = 11?</p>
+        <label><input type="radio" name="q5" value="4"> 4</label>
+        <label><input type="radio" name="q5" value="3"> 3</label>
+        <label><input type="radio" name="q5" value="5"> 5</label>
       </div>
       <button type="button" onclick="calificar()">Calificar</button> <!-- Botón para calificar el test -->
     </form> <!-- Fin del formulario del quiz -->
@@ -116,15 +116,15 @@
   <script>
     function calificar() { // Función que evalúa las respuestas del usuario
       const respuestasCorrectas = { // Objeto con las respuestas correctas
-        q1: "O", // Respuesta correcta de la pregunta 1
-        q2: "1", // Respuesta correcta de la pregunta 2
-        q3: "Covalente", // Respuesta correcta de la pregunta 3
-        q4: "H₂O", // Respuesta correcta de la pregunta 4
-        q5: "Donador de protones" // Respuesta correcta de la pregunta 5
+        q1: "12", // Respuesta correcta de la pregunta 1
+        q2: "9", // Respuesta correcta de la pregunta 2
+        q3: "18", // Respuesta correcta de la pregunta 3
+        q4: "Equilátero", // Respuesta correcta de la pregunta 4
+        q5: "4" // Respuesta correcta de la pregunta 5
       };
       let correctas = 0; // Contador de respuestas correctas
 
-      // Reset estilos
+      // Limpiar colores anteriores
       for (let pregunta in respuestasCorrectas) { // Recorre cada pregunta
         const opciones = document.querySelectorAll(`input[name="${pregunta}"]`); // Selecciona todas las opciones de la pregunta
         opciones.forEach(opcion => { // Itera sobre cada opción
@@ -147,6 +147,6 @@
       resultado.innerHTML = `Obtuviste ${correctas} de 5 respuestas correctas. (${correctas * 20}%)`; // Muestra el puntaje obtenido
       resultado.style.color = correctas === 5 ? "lime" : "orange"; // Si todas son correctas, el texto es verde; si no, naranja
     }
-  </script> <!-- Fin del bloque de JavaScript -->
-</body> <!-- Fin del body del documento HTML -->
-</html> <!-- Fin del documento HTML -->
+  </script> <!-- Fin del bloque de script -->
+</body>
+</html>
