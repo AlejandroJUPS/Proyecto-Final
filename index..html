@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Ingreso</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            background-color: #121212;
+            color: white;
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+        }
+        input {
+            padding: 10px;
+            font-size: 16px;
+            width: 200px;
+        }
+        button {
+            background-color: black;
+            color: white;
+            width: 100px;
+            height: 50px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        #DIABLO {
+            width: 200px;
+            height: 200px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>RETROPREPARATE</h1>
+        <p>Ingresa el PIN para continuar</p>
+        <input type="password" placeholder="PIN">
+        <button>Ingresar</button>
+    </div>
+    <script>
+        const PIN_CORRECTO = "1234"; // Aquí defines la contraseña
+
+        document.querySelector("button").addEventListener("click", () => {
+            const inputPIN = document.querySelector("input").value;
+            if (inputPIN === PIN_CORRECTO) {
+                window.location.href = "Menu.html"; // Redirige a la URL del juego
+            } else {
+                alert("PIN incorrecto");
+            }
+        });
+    </script>
+</body>
+</html>
